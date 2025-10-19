@@ -2,11 +2,9 @@ const input = document.getElementById('task-input');
 const addBtn = document.getElementById('add-btn');
 const list = document.getElementById('task-list');
 
-// Load tasks from localStorage
 let tasks = JSON.parse(localStorage.getItem('todo-tasks')) || [];
 renderTasks();
 
-// Add Task
 addBtn.onclick = () => {
   const value = input.value.trim();
   if (value) {
@@ -24,7 +22,6 @@ addBtn.onclick = () => {
   }
 };
 
-// Add task on Enter
 input.addEventListener('keyup', function(e) {
   if (e.key === 'Enter') addBtn.click();
 });
@@ -50,7 +47,6 @@ function renderTasks() {
     details.appendChild(span);
     details.appendChild(dateSpan);
 
-    // Complete Button
     const completeBtn = document.createElement('button');
     completeBtn.className = 'action-btn complete';
     completeBtn.innerHTML = '✓';
@@ -61,14 +57,12 @@ function renderTasks() {
       renderTasks();
     };
     
-    // Edit Button
     const editBtn = document.createElement('button');
     editBtn.className = 'action-btn edit';
     editBtn.innerHTML = '✎';
     editBtn.title = 'Edit task';
     editBtn.onclick = () => editTask(idx);
 
-    // Delete Button
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'action-btn delete';
     deleteBtn.innerHTML = '🗑';
